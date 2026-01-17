@@ -126,9 +126,10 @@ app.post('/verify-otp', async (req, res) => {
 })
 
 // 🔹 9. Start server (MOST IMPORTANT PART)
-const PORT = 5000
-const server = app.listen(PORT, () => {
-  console.log(`🚀 Server is running on http://localhost:${PORT}`)
+const PORT = process.env.PORT || 5000
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server is running on port ${PORT}`)
+  console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`)
 })
 
 // Keep server alive
